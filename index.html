@@ -1,47 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Charity: Water — Be the Drop That Starts the Wave</title>
+
+    <!-- Google Fonts (simple and readable) -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Link to stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
+    <!-- Top navigation bar -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <!-- Simple logo block -->
+            <div class="logo">
+                <!-- Yellow icon box with text next to it -->
+                <div class="logo-icon" aria-hidden="true">⛯</div>
+                <div class="logo-text">charity: water</div>
+            </div>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
+            <!-- Right side of header: nav, search, donate -->
+            <div class="header-right">
+                <!-- Primary navigation -->
+                <nav class="main-nav" aria-label="Main navigation">
+                    <a href="#">Who We Are</a>
+                    <a href="#">What We Do</a>
+                    <a href="#">How To Help</a>
+                </nav>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
+                <!-- Simple search form (non-functional placeholder) -->
+                <form class="search-form" role="search" action="#" onsubmit="return false;">
+                    <input type="search" class="header-search" placeholder="Search" aria-label="Search site">
+                </form>
+
+                <!-- Donate button in header -->
+                <a class="header-donate" href="#">Donate</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section: large heading and image side-by-side -->
+    <main>
+        <section class="hero container">
+            <!-- Left column: headline, subhead, input + button -->
+            <div class="hero-left">
+                <!-- Big heading split on multiple lines for emphasis -->
+                <h1 class="hero-title">Be the Drop That Starts<br/>the Wave</h1>
+
+                <p class="hero-sub">
+                    Together, we can turn small acts of giving into waves of clean water and lasting change.
+                </p>
+
+                <!-- Simple form-like CTA area (non-functional placeholder) -->
+                <div class="hero-cta">
+                    <!-- Visual input placeholder -->
+                    <input type="text" class="email-input" placeholder="Make a difference today" aria-label="Donation amount or message">
+                    <a href="#" class="donate-button large">Donate Now</a>
+                </div>
+
+                <p class="small-note">
+                    <strong>100%</strong> of your donation funds clean water projects updated weekly <a href="#">here</a>.
+                </p>
+            </div>
+
+            <!-- Right column: large image -->
+            <div class="hero-right">
+                <img src="img/water_splash_hands.jpeg" alt="Hands splashing water at a pump" class="hero-image">
+            </div>
+        </section>
+
+        <!-- Why Us section -->
+        <section class="why-us container">
+            <h2>Why Us?</h2>
+            <p class="why-text">
+                We believe every small action can create a ripple of change. With thousands of volunteers and donors around the world, we've turned simple acts of giving into real, measurable impact. Join us today and be part of something bigger than yourself.
             </p>
+
+            <!-- Small right-aligned CTA to match design -->
+            <div class="why-cta">
+                <a class="secondary-button" href="#">Join the Wave</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Full-width bottom banner -->
+    <section class="impact-banner">
+        <div class="container banner-inner">
+            One Mission. Thousands of Volunteers. Endless Impact.
         </div>
     </section>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+    <!-- Footer (minimal) -->
+    <footer class="site-footer container">
+        <p>© Charity: Water — Placeholder content for demo.</p>
+    </footer>
 </body>
 </html>

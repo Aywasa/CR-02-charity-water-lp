@@ -24,13 +24,20 @@ Fonts:
 */
 
 /* Set up the main font and background color for the whole page */
-body {
-  background-color: #f4f8fb; /* Soft light blue for a fresh look */
-  font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #222;
+:root{
+  /* Updated to match README brand colors and use a single solid background color */
+  --navy: #083a5b;         /* primary dark blue */
+  --bg: #ffffff;           /* single solid page background (from README) */
+  --accent: #c77952;       /* warm donate/button color */
+  --yellow: #f4bf2b;       /* logo and banner accent */
+  --text: #1a1a1a;
+  --max-width: 1100px;
+  --radius: 10px;
 }
+
+/* Basic reset and fonts */
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; font-family: 'Inter', system-ui, -apple-system, sans-serif; color:var(--text); background:var(--bg); }
 
 /* Add a slight shadow and rounded corners to each section for depth */
 section {
@@ -44,20 +51,19 @@ section {
 /* Hero Section Styles */
 .hero {
   position: relative; /* Needed for overlay */
-  /* Set a background image that covers the whole section */
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
-  background-size: cover;      /* Make the image cover the whole area */
-  background-position: center; /* Center the image */
+  /* Use a single solid background color (primary blue from the README) */
+  background-image: none;
+  background-color: #2E9DF7; /* solid blue */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   color: #fff;                 /* White text for contrast */
   text-align: center;          /* Center the text */
   padding: 60px 20px;          /* Add space above and below */
   border-radius: 0 0 16px 16px; /* Only round bottom corners */
 
-  /* Add a dark overlay for better text readability */
-  /* This uses a simple linear-gradient overlay */
-  background-blend-mode: darken;
-  background-color: rgba(46, 157, 247, 0.45); /* Blue overlay */
+  /* Remove overlay blending (no image anymore) */
+  background-blend-mode: normal;
 }
 
 /* Make the headline bold and modern */
@@ -131,9 +137,112 @@ h2 {
   transform: translateY(-2px) scale(1.04); /* Slight lift */
 }
 
+/* Header Donate Button Styles */
+.header-donate {
+  /* Updated: make donate a pop-out CTA with bright gradient, padding, and shadow */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ffd26a 0%, #ff8a6b 100%); /* warm, eye-catching gradient */
+  color: #082934; /* dark text for contrast */
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 10px 22px rgba(255,138,107,0.18), 0 2px 6px rgba(0,0,0,0.08);
+  border: none;
+  transform: translateY(0);
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover and focus give a subtle lift to reinforce the pop-out effect */
+.header-donate:hover,
+.header-donate:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 30px rgba(255,138,107,0.20), 0 6px 12px rgba(0,0,0,0.12);
+  opacity: 0.98;
+  outline: none;
+}
+
+/* Optional: slightly larger touch target on small screens */
+@media (max-width: 480px) {
+  .header-donate { padding: 14px 20px; border-radius: 14px; }
+}
+
 /* Add some spacing between sections */
 section {
   margin-bottom: 20px;
+}
+
+/* Header layout: keep logo + nav + search + donate all on one line */
+.site-header {
+  background: transparent;      /* header sits above the hero */
+  padding: 10px 0;              /* compact header so it stays clearly above the headline */
+}
+
+/* Main header inner row: align items and prevent wrapping */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: nowrap;            /* important: do not wrap to multiple lines */
+}
+
+/* Logo should keep its width and not shrink */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;               /* do not grow or shrink */
+}
+
+/* Right side of header: nav + search + donate */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 auto;               /* allow the right area to take remaining space */
+  justify-content: flex-end;    /* keep items aligned to the right */
+  min-width: 0;                 /* allow children to shrink properly */
+}
+
+/* Navigation links in a single row */
+.main-nav {
+  display: flex;
+  gap: 12px;
+  flex: 0 0 auto;               /* keep nav compact and prevent it from splitting */
+}
+.main-nav a {
+  white-space: nowrap;          /* prevent link text from wrapping to next line */
+  text-decoration: none;
+  color: #222;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+/* Search input: fixed width but allowed to shrink a bit on narrow screens */
+.header-search {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.08);
+  width: 180px;
+  min-width: 120px;             /* allow small shrink but prevent collapse */
+  flex: 0 1 180px;              /* don't grow, but can shrink */
+}
+
+/* Ensure the donate CTA stays visible and doesn't wrap */
+.header-donate {
+  flex: 0 0 auto;               /* fixed size element, won't shrink */
+}
+
+/* Responsive tweak: on very small screens hide nav to keep one-line header */
+@media (max-width: 560px) {
+  .main-nav { display: none; }
+  .header-search { width: 120px; }
+  .header-inner { gap: 8px; padding: 6px 0; }
 }
 
 /* 
