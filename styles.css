@@ -193,10 +193,18 @@ section {
 
 /* Logo should keep its width and not shrink */
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 0 0 auto;               /* do not grow or shrink */
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* New: size and align the water-can image */
+.logo-img {
+  width:44px;
+  height:44px;
+  display:block;
+  object-fit:contain;   /* keep the transparent image proportions */
+  flex: 0 0 44px;       /* do not stretch or shrink unexpectedly */
 }
 
 /* Right side of header: nav + search + donate */
