@@ -93,15 +93,41 @@ section {
   align-items: center;
   justify-content: center;
   min-width: 0;
+
+  /* needed for overlay positioning and to prevent overflow when image grows */
+  position: relative;
+  overflow: hidden;
 }
 
 /* Make sure the image fills its column while keeping aspect ratio */
 .hero-image {
   width: 100%;
   height: auto;
-  max-width: 520px;
+  max-width: 620px;      /* increased from 520px */
   border-radius: 8px;
   display: block;
+  position: relative;
+  z-index: 1;            /* keep image below overlay pseudo-element */
+  object-fit: cover;
+  transition: transform 240ms ease; /* subtle smoothness if later animated */
+}
+
+/* Subtle gradient overlay above the image for depth and readability */
+.hero-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;                        /* cover the full hero-right area */
+  border-radius: 8px;              /* match image radius */
+  pointer-events: none;            /* don't block clicks */
+  z-index: 2;                      /* sit above the image */
+  background: linear-gradient(180deg, rgba(0,51,102,0.12) 0%, rgba(0,0,0,0.00) 60%);
+  mix-blend-mode: normal;
+  transition: opacity 240ms ease;
+}
+
+/* Optional: slight image scale on hover for a gentle effect (non-required) */
+.hero-right:hover .hero-image {
+  transform: scale(1.02);
 }
 
 /* Make the headline bold and modern */
@@ -112,6 +138,13 @@ section {
   line-height: 1.02;
 }
 
+/* Hero subheadline: increase size by 4pt */
+.hero-sub {
+  font-size: calc(1.2em + 4pt);
+  margin-top: 0;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
 /* Style the subheadline */
 .hero p {
   font-size: 1.2em;
@@ -119,12 +152,12 @@ section {
   text-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
 
-/* Hero CTA: stack subtext above the button and align left */
+/* Hero CTA: stack subtext above the button and reduce spacing between them */
 .hero-cta {
   display: flex;
-  flex-direction: column;   /* put subtext above the button */
+  flex-direction: column;   /* subtext above the button */
   align-items: flex-start;  /* left-align both items */
-  gap: 8px;
+  gap: 4px;                 /* reduced gap so subtext sits closer to the button */
   margin-top: 8px;
 }
 
@@ -143,13 +176,16 @@ section {
 
 /* Donate Now (primary on the hero) - ensure button text color matches request */
 .donate-button.large {
-  background: #ffc907; /* button background kept as requested */
-  color: #003366;      /* text color requested */
+  background: #FFC907; /* requested donate color */
+  /* keep existing text/border for contrast */
+  color: #003366;
   padding: 14px 20px;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 700;
-  border: none;
+  border: 2px solid #003366;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 /* Story Section Styles */
@@ -318,7 +354,7 @@ section {
 /* Ensure the donate CTA stays visible and doesn't wrap */
 .header-donate {
   flex: 0 0 auto;               /* fixed size element, won't shrink */
-  background: #ffc907;   /* requested donate button color */
+  background: #FFC907;   /* requested donate button color */
   color: #ffffff;        /* white text on the button */
   padding: 12px 18px;
   border-radius: 12px;
@@ -342,12 +378,12 @@ section {
 
 /* Why Us section: white card with specified headline and body colors */
 .why-us {
-  background-color: #ffffff; /* white background */
+  background-color: #8BD1CB; /* white background */
   color: #1a1a1a;            /* body text color */
   padding: 28px 0 60px 0;
 }
 .why-us h2 {
-  color: #003366; /* headline deep blue */
+  color: #1a1a1a; /* headline deep blue */
   margin-bottom: 12px;
   font-weight: bold;
 }
@@ -378,9 +414,9 @@ section {
 
 /* Subtitle below the title */
 .banner-sub {
-  color: #fff7e1; /* requested subheadline color */
+  font-size: calc(1rem + 4pt);
+  color: #fff7e1; /* preserve existing color */
   margin: 0 0 16px 0;
-  font-size: 1rem;
 }
 
 /* Tabs (Sign Up / Get Involved) styled similar to the navigation bar */
