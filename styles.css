@@ -119,6 +119,20 @@ section {
   text-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
 
+/* Hero CTA: stack subtext above the button and align left */
+.hero-cta {
+  display: flex;
+  flex-direction: column;   /* put subtext above the button */
+  align-items: flex-start;  /* left-align both items */
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Ensure the large donate button stays left aligned */
+.donate-button.large {
+  align-self: flex-start;
+}
+
 /* CTA area stays inline but aligned left */
 .hero-cta {
   display: flex;
@@ -127,14 +141,15 @@ section {
   margin-top: 8px;
 }
 
-/* Donate Now (primary on the hero) */
+/* Donate Now (primary on the hero) - ensure button text color matches request */
 .donate-button.large {
-  background: #ffc907; /* button color requested */
-  color: #ffffff;      /* white text on button */
+  background: #ffc907; /* button background kept as requested */
+  color: #003366;      /* text color requested */
   padding: 14px 20px;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 700;
+  border: none;
 }
 
 /* Story Section Styles */
@@ -341,6 +356,61 @@ section {
   color: #1a1a1a; /* ensure body paragraphs use the requested text color */
 }
 
+/* Impact banner now acts as a titled section with subtitle and tab-buttons */
+.impact-banner {
+  background: #003366; /* updated to requested deep blue */
+  color: #1a1a1a;
+  padding: 28px 0;
+  margin-top: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,51,102,0.06);
+}
+
+.banner-inner { text-align: center; max-width: 1000px; margin: 0 auto; }
+
+/* Banner title styled as section heading using white on deep blue */
+.banner-title {
+  color: #ffffff; /* updated to white per request */
+  font-size: 1.8rem;
+  margin: 0 0 8px 0;
+  font-weight: 800;
+}
+
+/* Subtitle below the title */
+.banner-sub {
+  color: #fff7e1; /* requested subheadline color */
+  margin: 0 0 16px 0;
+  font-size: 1rem;
+}
+
+/* Tabs (Sign Up / Get Involved) styled similar to the navigation bar */
+.banner-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+/* Tab button appearance: use requested button color */
+.tab-button {
+  display: inline-block;
+  background: #bf6c46;      /* requested button color */
+  color: #ffffff;           /* white text for contrast */
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+}
+
+/* Hover/focus for tabs: slightly darker for feedback */
+.tab-button:hover,
+.tab-button:focus {
+  background: #9a4f36;
+  text-decoration: none;
+  outline: none;
+}
+
 /* 
   Media Queries for Responsive Design
   Media queries help make your website look good on different screen sizes,
@@ -401,14 +471,3 @@ section {
     width: 300px;
   }
 }
-
-/* Full-width bottom banner */
-.impact-banner {
-  background: var(--deep-blue);        /* use deep blue for banner */
-  color: var(--primary-yellow);        /* yellow text to pop on deep blue */
-  padding: 24px 0;
-  margin-top: 18px;
-  border-radius: 12px;
-}
-
-/*# sourceMappingURL=styles.css.map */
